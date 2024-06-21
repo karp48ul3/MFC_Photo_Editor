@@ -199,8 +199,6 @@ void RotateImage(double angle_rot, bool direction, std::string windowName) {
 		angle += angle_rot;
 	}
 
-	zoomedImgSentinel = true;
-
 	// get rotation matrix for rotating the image around its center in pixel coordinates
 	cv::Point2f center((currentImageDisplayed.cols - 1) / 2.0, (currentImageDisplayed.rows - 1) / 2.0);
 	cv::Mat rot = cv::getRotationMatrix2D(center, angle, 1.0);
@@ -227,10 +225,10 @@ void RotateImage(double angle_rot, bool direction, std::string windowName) {
 		opp.erase(opp.begin() + undoRedo_vector_i + 1, opp.end());
 	}
 
-	if (!zoomedImgSentinel) {
-		//zoomedImg = currentImageDisplayed;
-		cv::resize(currentImageDisplayed, currentImageDisplayed, cv::Size(zoomedImg.cols * zoomedImgScale, zoomedImg.rows * zoomedImgScale));
-	}
+	//if (!zoomedImgSentinel) {
+	//	//zoomedImg = currentImageDisplayed;
+	//	cv::resize(currentImageDisplayed, currentImageDisplayed, cv::Size(zoomedImg.cols * zoomedImgScale, zoomedImg.rows * zoomedImgScale));
+	//}
 	/*undoRedo_vector.push_back(currentImageDisplayed);
 	undoRedo_vector_i++;*/
 	cv::imshow(windowName, currentImageDisplayed);
@@ -309,12 +307,7 @@ void CMFCtutorial3View::OnFileOpen()
 				opp.clear();
 				opp.push_back({ "init", 0.0 });
 				undoRedo_vector_i = 0;
-				firstTimeRot = true;
-				beforeRot = ImageMat;
-				zoomedImgSentinel = true;
-				zoomedImgScale = 1.0;
-				lastWasZoomIn = 0;
-
+				
 				cv::setWindowProperty("Displaywindow", cv::WND_PROP_TOPMOST, 1);
 
 				//namedWindow(windowname, WINDOW_AUTOSIZE);
@@ -453,8 +446,6 @@ void CMFCtutorial3View::OnToolsSharpen()
 		return;
 	}
 	// TODO: Add your command handler code here
-	zoomedImgSentinel = true;
-	firstTimeRot = true;
 	cv::Mat afterSharpen;
 	cv::GaussianBlur(currentImageDisplayed, afterSharpen, cv::Size(0, 0), 3);
 	cv::addWeighted(currentImageDisplayed, 1.5, afterSharpen, -0.5, 2.0/*0*/, afterSharpen);
@@ -477,10 +468,10 @@ void CMFCtutorial3View::OnToolsSharpen()
 	// construct a std::string using the LPCSTR input
 	std::string strStd(pszConvertedAnsiString);
 
-	if (!zoomedImgSentinel) {
-		//zoomedImg = currentImageDisplayed;
-		cv::resize(currentImageDisplayed, currentImageDisplayed, cv::Size(zoomedImg.cols * zoomedImgScale, zoomedImg.rows * zoomedImgScale));
-	}
+	//if (!zoomedImgSentinel) {
+	//	//zoomedImg = currentImageDisplayed;
+	//	cv::resize(currentImageDisplayed, currentImageDisplayed, cv::Size(zoomedImg.cols * zoomedImgScale, zoomedImg.rows * zoomedImgScale));
+	//}
 
 	cv::imshow(strStd, currentImageDisplayed);
 }
