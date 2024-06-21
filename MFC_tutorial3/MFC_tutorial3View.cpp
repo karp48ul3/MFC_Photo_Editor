@@ -168,19 +168,9 @@ double angle = 0.0;
 HWND hParent;
 CString CstrWindowname{ "Displaywindow" };
 std::string strWindowname{ "Displaywindow" };
-//cv::Mat beforeRot;
-//bool firstTimeRot = true;
-//int lastWasZoomIn = 0; // 0: nor zoomin nor zoomout was called
-//1 - zoomin was called
-//2 - zoom out was called
 
 void RotateImage(double angle_rot, bool direction, std::string windowName) {
-	/*if (firstTimeRot) {
-		if (!currentImageDisplayed.empty()) {
-			beforeRot = currentImageDisplayed;
-		}
-		firstTimeRot = false;
-	}*/
+
 	if (ImageMat.empty()) {
 		AfxMessageBox(_T("No image displayed"), MB_OK | MB_ICONSTOP);
 		return;
@@ -468,12 +458,7 @@ void CMFCtutorial3View::OnToolsSharpen()
 	// construct a std::string using the LPCSTR input
 	std::string strStd(pszConvertedAnsiString);
 
-	//if (!zoomedImgSentinel) {
-	//	//zoomedImg = currentImageDisplayed;
-	//	cv::resize(currentImageDisplayed, currentImageDisplayed, cv::Size(zoomedImg.cols * zoomedImgScale, zoomedImg.rows * zoomedImgScale));
-	//}
-
-	cv::imshow(strStd, currentImageDisplayed);
+	cv::imshow(strWindowname, currentImageDisplayed);
 }
 
 
