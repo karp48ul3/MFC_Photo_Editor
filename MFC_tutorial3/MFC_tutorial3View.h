@@ -46,12 +46,10 @@ protected:
 public:
 	afx_msg void OnFileOpen();
 	afx_msg void OnFileSave();
-	afx_msg void OnToolsRotate45();
-	afx_msg void OnToolsRotate();
 	afx_msg void OnToolsRotate90();
 	afx_msg void OnToolsRotate32774();
 	afx_msg void OnToolsSharpen();
-	afx_msg void OnMenu();
+	afx_msg void OnToolsZoomin();
 	afx_msg void OnToolsZoomout();
 	afx_msg void OnEditUndo();
 	afx_msg void OnEditRedo32778();

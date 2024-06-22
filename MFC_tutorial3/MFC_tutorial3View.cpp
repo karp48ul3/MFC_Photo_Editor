@@ -45,7 +45,7 @@ BEGIN_MESSAGE_MAP(CMFCtutorial3View, CView)
 	ON_COMMAND(ID_TOOLS_ROTATE90, &CMFCtutorial3View::OnToolsRotate90)
 	ON_COMMAND(ID_TOOLS_ROTATE32774, &CMFCtutorial3View::OnToolsRotate32774)
 	ON_COMMAND(ID_TOOLS_SHARPEN, &CMFCtutorial3View::OnToolsSharpen)
-	ON_COMMAND(ID_Menu, &CMFCtutorial3View::OnMenu)
+	ON_COMMAND(ID_Menu, &CMFCtutorial3View::OnToolsZoomin)
 	ON_COMMAND(ID_TOOLS_ZOOMOUT, &CMFCtutorial3View::OnToolsZoomout)
 	ON_COMMAND(ID_EDIT_UNDO, &CMFCtutorial3View::OnEditUndo)
 	ON_COMMAND(ID_EDIT_REDO32778, &CMFCtutorial3View::OnEditRedo32778)
@@ -415,15 +415,12 @@ void CMFCtutorial3View::OnToolsSharpen()
 		opp.erase(opp.begin() + undoRedo_vector_i + 1, opp.end());
 
 	}
-	CT2CA pszConvertedAnsiString(CstrWindowname);
-	// construct a std::string using the LPCSTR input
-	std::string strStd(pszConvertedAnsiString);
 
 	cv::imshow(strWindowname, currentImageDisplayed);
 }
 
 
-void CMFCtutorial3View::OnMenu()
+void CMFCtutorial3View::OnToolsZoomin()
 {
 	// TODO: Add your command handler code here
 	hParent = (HWND)FindWindow(NULL, CstrWindowname);
