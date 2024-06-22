@@ -42,8 +42,6 @@ BEGIN_MESSAGE_MAP(CMFCtutorial3View, CView)
 	ON_WM_RBUTTONUP()
 	ON_COMMAND(ID_FILE_OPEN, &CMFCtutorial3View::OnFileOpen)
 	ON_COMMAND(ID_FILE_SAVE, &CMFCtutorial3View::OnFileSave)
-	ON_COMMAND(ID_TOOLS_ROTATE45, &CMFCtutorial3View::OnToolsRotate45)
-	ON_COMMAND(ID_TOOLS_ROTATE, &CMFCtutorial3View::OnToolsRotate)
 	ON_COMMAND(ID_TOOLS_ROTATE90, &CMFCtutorial3View::OnToolsRotate90)
 	ON_COMMAND(ID_TOOLS_ROTATE32774, &CMFCtutorial3View::OnToolsRotate32774)
 	ON_COMMAND(ID_TOOLS_SHARPEN, &CMFCtutorial3View::OnToolsSharpen)
@@ -352,43 +350,6 @@ void CMFCtutorial3View::OnFileSave()
 		}
 	}
 }
-
-
-void CMFCtutorial3View::OnToolsRotate45()
-{
-	// TODO: Add your command handler code here
-	if (ImageMat.empty()) {
-		AfxMessageBox(_T("No image displayed"), MB_OK | MB_ICONSTOP);
-		return;
-	}
-
-	hParent = (HWND)FindWindow(NULL, CstrWindowname);
-	if (hParent == NULL) {
-		AfxMessageBox(_T("No image displayed"), MB_OK | MB_ICONSTOP);
-		return;
-	}
-	currentImageDisplayed = RotateHelper(currentImageDisplayed, -angle, true, "Displaywindow");
-	RotateImage(-45.0, true, "Displaywindow");
-}
-
-
-void CMFCtutorial3View::OnToolsRotate()
-{
-	// TODO: Add your command handler code here
-	if (ImageMat.empty()) {
-		AfxMessageBox(_T("No image displayed"), MB_OK | MB_ICONSTOP);
-		return;
-	}
-
-	hParent = (HWND)FindWindow(NULL, CstrWindowname);
-	if (hParent == NULL) {
-		AfxMessageBox(_T("No image displayed"), MB_OK | MB_ICONSTOP);
-		return;
-	}
-	currentImageDisplayed = RotateHelper(currentImageDisplayed, -angle, true, "Displaywindow");
-	RotateImage(45.0, false, "Displaywindow");
-}
-
 
 void CMFCtutorial3View::OnToolsRotate90()
 {
